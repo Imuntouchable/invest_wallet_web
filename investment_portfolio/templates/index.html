@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-balance">
+            <h2>Баланс: <span class="balance">{{ user.balance }}</span> RUB</h2>
+        </div>
+
+        <!-- Вывод сообщений об успехе или ошибке -->
+        {% if messages %}
+            <div class="container mt-4">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <section class="assets-section">
+            <h3>Ваши активы</h3>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Монета</th>
+                        <th>Количество</th>
+                        <th>Стоимость (RUB)</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for asset in assets %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ asset.coin_name }}</td>
+                        <td>{{ asset.quantity }}</td>
+                        <td>{{ asset.value_rub }}</td>
+                        <td>
+                            <!-- Кнопка для удаления актива -->
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAssetModal{{ forloop.counter }}">Удалить</button>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5">Нет активов</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Кнопка для добавления актива -->
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAssetModal">Добавить актив</button>
+
+        <!-- Модальное окно для добавления актива -->
+        <div class="modal fade" id="addAssetModal" tabindex="-1" aria-labelledby="addAssetModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addAssetModalLabel">Добавить актив</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="{% url 'add_asset' user.id %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="coin_name" class="form-label">Монета</label>
+                                <input type="text" class="form-control" id="coin_name" name="coin_name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">Количество</label>
+                                <input type="number" class="form-control" id="quantity" name="quantity" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="value_rub" class="form-label">Стоимость (RUB)</label>
+                                <input type="number" class="form-control" id="value_rub" name="value_rub" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Добавить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Модальное окно для удаления актива -->
+        {% for asset in assets %}
+        <div class="modal fade" id="deleteAssetModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="deleteAssetModalLabel{{ forloop.counter }}" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteAssetModalLabel{{ forloop.counter }}">Удалить актив</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Вы уверены, что хотите удалить актив "{{ asset.coin_name }}"?
+                    </div>
+                    <div class="modal-footer">
+                        <form method="POST" action="{% url 'delete_asset' user.id asset.id %}">
+                            {% csrf_token %}
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                            <button type="submit" class="btn btn-danger">Удалить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Кнопка для выхода из профиля -->
+        <a href="{% url 'logout' %}" class="btn btn-warning">Выйти</a>
+
+        <footer class="profile-footer">
+            <p>Инвестиционный портфель © 2025</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

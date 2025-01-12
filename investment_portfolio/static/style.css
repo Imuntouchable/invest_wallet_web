@@ -1,0 +1,238 @@
+body {
+    background: linear-gradient(135deg, #1c1c1c, #3a3a3a);
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #2d2d2d;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.profile-header {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 2px solid #444;
+}
+
+.profile-header h1 {
+    font-size: 2.5em;
+    color: #ffd700;
+}
+
+.profile-balance {
+    text-align: center;
+    color: #fff;
+    margin: 20px 0;
+}
+
+.balance {
+    font-size: 1.8em;
+    color: #00ff7f;
+}
+
+.assets-section {
+    margin: 20px 0;
+}
+
+.assets-section h3 {
+    text-align: center;
+    font-size: 1.5em;
+    color: #ff7f50;
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.table thead {
+    background-color: #444;
+}
+
+.table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #555;
+}
+
+.profile-footer {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 2px solid #444;
+    color: #aaa;
+}
+
+.registration-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 30px;
+    background: #2d2d2d;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.registration-header h1 {
+    font-size: 2em;
+    color: #ffd700;
+    margin-bottom: 20px;
+}
+
+.registration-form .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.registration-form .form-group label {
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.registration-form .form-control {
+    border: 1px solid #555;
+    background: #1c1c1c;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.registration-form .btn {
+    width: 100%;
+    padding: 10px;
+    background: #00ff7f;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.registration-form .btn:hover {
+    background: #00cc63;
+}
+
+.registration-footer p {
+    color: #aaa;
+    margin-top: 20px;
+}
+
+.registration-footer a {
+    color: #ffd700;
+    text-decoration: none;
+}
+
+/* Общие стили для контейнера формы */
+.login-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 30px;
+    background: #2d2d2d; /* Тёмный фон */
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* Стили для заголовка формы */
+.login-header h1 {
+    font-size: 2em;
+    color: #ffd700; /* Золотистый цвет для заголовка */
+    margin-bottom: 20px;
+}
+
+/* Стили для групп ввода */
+.login-form .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Стили для меток ввода */
+.login-form .form-group label {
+    color: #fff; /* Белый цвет для меток */
+    margin-bottom: 5px;
+}
+
+/* Стили для полей ввода */
+.login-form .form-control {
+    border: 1px solid #555;
+    background: #1c1c1c; /* Тёмный фон для полей */
+    color: #fff; /* Белый цвет текста */
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Стили для кнопки отправки */
+.login-form .btn {
+    width: 100%;
+    padding: 10px;
+    background: #1e90ff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+/* Эффект наведения на кнопку */
+.login-form .btn:hover {
+    background: #0073e6;
+}
+
+/* Стили для футера формы */
+.login-footer p {
+    color: #aaa; /* Светло-серый цвет для текста футера */
+    margin-top: 20px;
+}
+
+/* Стили для ссылок в футере */
+.login-footer a {
+    color: #ffd700; /* Золотистая ссылка */
+    text-decoration: none;
+}
+
+/* Стили для сообщений об успехе и ошибках */
+.messages {
+    margin-top: 20px;
+}
+
+.alert {
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1em;
+    text-align: left;
+}
+
+/* Стили для успешных сообщений (зеленый фон) */
+.alert-success {
+    background-color: #28a745; /* Зеленый фон */
+    color: #fff; /* Белый текст */
+}
+
+/* Стили для сообщений об ошибках (красный фон) */
+.alert-danger {
+    background-color: #dc3545; /* Красный фон */
+    color: #fff; /* Белый текст */
+}
+
+/* Для информационных сообщений (синий фон) */
+.alert-info {
+    background-color: #17a2b8; /* Синий фон */
+    color: #fff; /* Белый текст */
+}
